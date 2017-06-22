@@ -1,0 +1,5 @@
+export const confident = 'confident'
+export const notConfident = 'notConfident'
+export const modified = 'modified'
+export const noInput = 'noInput'
+export const unknown = 'unknown'
