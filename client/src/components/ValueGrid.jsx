@@ -71,7 +71,6 @@ class ValueGrid extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <Table
