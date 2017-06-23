@@ -43,35 +43,5 @@ function fastAPIQuery (query, queryIndex, callback) {
     callback(err);
   })
 }
-/*
-const fastAPIQuerys = function queryAssignFastAPI(query, cb, queryIndex="suggestall", numRows=20) {
-  const suggestReturn = queryIndex + "%2Cidroot%2Cauth";
-  let qres = "&query=" + query + "&queryIndex=" + queryIndex + "&queryReturn=" + suggestReturn;
-  qres += "&suggest=autoSubject&rows=" + numRows;
-  const url = 'http://fast.oclc.org/searchfast/fastsuggest?' + qres;
-
-  let names = [];
-  let body =  "";
-  const req = http.get(url, (res) => {
-    res.setEncoding('utf8');
-    res.on('data', (chunk) => {
-      body += chunk;
-    });
-    
-    res.on('end', () => {
-      const result = JSON.parse(body);
-      result.response.docs.forEach(element => {
-        if (!names.includes(element.auth)){
-          names.push(element.auth)
-        }
-      })            
-      cb(names);
-    });
-  })
-  req.on('error', (e) => {
-    console.log(`problem with request: ${e}`);
-  });
-}
-*/
 
 module.exports = router;
