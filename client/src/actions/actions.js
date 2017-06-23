@@ -112,6 +112,7 @@ export function updateOriginal(attribute, row, value) {
 }
 
 export function updateAdjusted(attribute, row, value) {
+  value = value.filter(v => {return value !== ""});
   return {
     type: ActionTypes.UPDATE_ADJUSTED,
     attribute,

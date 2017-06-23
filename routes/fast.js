@@ -6,7 +6,6 @@ const http = require('http');
 router.get('/:index/:query', function(req, res, next) {
   result = fastAPIQuery(req.params.query, req.params.index, (err, data) => {
     if (err || !data) {
-      console.log('here')
       console.log(err)
       return next(err)
     }

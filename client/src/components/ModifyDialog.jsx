@@ -121,19 +121,20 @@ class ModifyDialog extends Component {
           actions={actions}
           open={open}
           modal={true}
+          autoScrollBodyContent={true}
         >
-           <List>
-             <ListItem
-                primaryText="Title"
-                disabled = {true} 
-             />
-             <ListItem
-                secondaryText={title}
-                insetChildren={true}
-                disabled = {true} 
-             />
+          <List>
+            <ListItem
+              primaryText="Title"
+              disabled = {true} 
+            />
+            <ListItem
+              secondaryText={title}
+              insetChildren={true}
+              disabled = {true} 
+            />
           </List>           
-           <List>
+          <List>
              <ListItem
                 primaryText="Original"
                 disabled = {true} 

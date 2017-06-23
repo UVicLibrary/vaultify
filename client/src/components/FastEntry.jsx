@@ -38,11 +38,13 @@ class FastEntry extends Component {
   }
 
   updateDataSource(searchText) {
+    if (searchText === "") {
+      return
+    }
     const route = '/fast/suggestall/' + searchText;
     fetch(route)
       .then(res => res.json())
       .then(json => {
-        console.log(json)
         this.setState({
           dataSource: json.names
         })
@@ -54,7 +56,6 @@ class FastEntry extends Component {
 
   render() {
     const { currentValue, dataSource } = this.state;
-    console.log(dataSource);
     return (
       <AutoComplete
         id='autocomplete'
