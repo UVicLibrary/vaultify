@@ -43,8 +43,15 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  update: (attribute, row, value) => {dispatch(updateAdjusted(attribute, row, value))},    
-})
+const mapDispatchToProps = (dispatch) => {
+  return {
+    update: (attribute, row, value) => {dispatch(updateAdjusted(attribute, row, value))},
+    updateAll: (attribute, rows, value) => {
+      rows.forEach(row => {
+        dispatch(updateAdjusted(attribute, row, value))
+      });
+    }    
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AttributeTabsContainer);

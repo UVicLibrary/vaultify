@@ -39,8 +39,23 @@ class ValueGrid extends Component {
     this.props.onApply(this.state.selectedRow, value)
     //this.selectNextRow()   
   }
+
   handleApplyAll(value) {
-    
+    this.handleDialogCancel()
+    let rows = [];
+    let original_value = this.props.data[this.state.selectedRow].original
+    this.props.data.forEach((row, index) => {
+      let equal = true
+      row.original.forEach((element, ind) => {
+        if (element !== original_value[ind]) {
+          equal = false;
+        }
+      })
+      if (equal) {
+        rows.push(index);
+      }
+    })
+    this.props.onApplyAll(rows, value)
   }
   
   selectNextRow() {

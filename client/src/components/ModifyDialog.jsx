@@ -105,7 +105,7 @@ class ModifyDialog extends Component {
       <FlatButton
         label="ApplyAll"
         secondary={true}
-        onTouchTap={onApplyAll}
+        onTouchTap={() => {onApplyAll(this.state.newAdjusted)}}
       />,
       <FlatButton
         label="Apply"

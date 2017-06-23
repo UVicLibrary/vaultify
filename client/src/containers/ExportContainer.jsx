@@ -62,40 +62,6 @@ const mapStateToProps = (state) => {
   return {
     csvString: csvString,
   }
-
-
-  /*
-  console.log(state)
-  const csv = state.dynamicAttributes.creator.map((dummy, index) => {
-      let obj = {};
-      state.headers.forEach(header => {
-        if (DynamicAttributesArray.includes(header)) {
-          obj[header] = state.dynamicAttributes[header][index].adjusted.join('|');
-        }
-        else {
-          obj[header] = state.flatAttributes[header][index].join('|');
-        }
-      });
-      return obj
-  });
-  let csvData = state.headers.join(',') + '\n';
-  csv.forEach(obj => {
-    let str = '';
-    state.headers.forEach(header => {
-      let adjusted = obj[header];
-      if (!adjusted){
-        adjusted = '""';
-      }
-      str += adjusted;
-      str += ',';
-    });
-    str = str.replace(/.$/, '/n');
-    csvData += str
-  });
-  return {
-    csvData: csvData
-  }
-  */
 }
 
 const mapDispatchToProps = (dispatch) => ({

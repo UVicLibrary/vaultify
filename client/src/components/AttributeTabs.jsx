@@ -41,6 +41,7 @@ class AttributeTabs extends Component {
       genre,
       title,
       update,
+      updateAll,
     } = this.props
     return (
       <Paper
@@ -53,7 +54,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {creator}
             onApply = {(row, value) => update('creator', row, value)}
-            //onApplyAll = {this.props.updateAllCreator}
+            onApplyAll = {(rows, value) => updateAll('creator', rows, value)}
             attribute = "Creator"
             category = {DialogCategories.FAST}
           />
@@ -66,7 +67,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {contributor}
             onApply = {(row, value) => update('contributor', row, value)}
-            //onApplyAll = {this.updateAllCreator}
+            onApplyAll = {(rows, value) => updateAll('contributor', rows, value)} 
             attribute = "Contributor"
             category = {DialogCategories.FAST}
           />
@@ -79,7 +80,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {subject}
             onApply = {(row, value) => update('subject', row, value)}
-            //onApplyAll = {this.updateAllSubject}
+            onApplyAll = {(rows, value) => updateAll('subject', rows, value)}
             attribute = "Subject"
             category = {DialogCategories.FAST}
           />         
@@ -92,7 +93,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {geographic_coverage}
             onApply = {(row, value) => update('geographic_coverage', row, value)}
-            //onApplyAll = {this.updateAllGeographicCoverage}
+            onApplyAll = {(rows, value) => updateAll('geographic_coverage', rows, value)}
             attribute = "Geographic Coverage"
             category = {DialogCategories.FAST}
           /> 
@@ -105,13 +106,12 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {date_created}
             onApply = {(row, value) => update('date_created', row, value)}
-            //onApplyAll = {this.updateAllDateCreated}
+            onApplyAll = {(rows, value) => updateAll('date_created', rows, value)}
             attribute = "Date Created"
             category = {DialogCategories.EDTF}
           /> 
         </div>
         </Tab>
-        
 
         <Tab label="chronological">
         <div>
@@ -119,7 +119,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {chronological_coverage}
             onApply = {(row, value) => update('chronological_coverage', row, value)}
-            //onApplyAll = {this.updateAllChronologicalCoverage}
+            onApplyAll = {(rows, value) => updateAll('chronological_coverage', rows, value)}
             attribute = "Chronological Coverage"
             category = {DialogCategories.EDTF}
           /> 
@@ -132,7 +132,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {date_digitized}
             onApply = {(row, value) => update('date_digitized', row, value)}
-            //onApplyAll = {this.updateAllDateDigitized}
+            onApplyAll = {(rows, value) => updateAll('date_digitized', rows, value)}
             attribute = "Date Digitized"
             category = {DialogCategories.EDTF}
           /> 
@@ -145,7 +145,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {language}
             onApply = {(row, value) => update('language', row, value)}
-            //onApplyAll = {this.updateAllLanguage}
+            onApplyAll = {(rows, value) => updateAll('language', rows, value)}
             attribute = "Language"
             category = {DialogCategories.LANGUAGE}
           /> 
@@ -158,7 +158,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {resource_type}
             onApply = {(row, value) => update('resource_type', row, value)}
-            //onApplyAll = {this.updateAllType}
+            onApplyAll = {(rows, value) => update('resource_type', rows, value)}
             attribute = "Type"
             category = {DialogCategories.TYPE}
           /> 
@@ -171,7 +171,7 @@ class AttributeTabs extends Component {
             titles = {title}
             data = {genre}
             onApply = {(row, value) => update('genre', row, value)}
-            //onApplyAll = {(row, value) => this.updateAllGenre}
+            onApplyAll = {(rows, value) => updateAll('genre', rows, value)}
             attribute = "Genre"
             category = {DialogCategories.EDTF}
           /> 
