@@ -7,9 +7,6 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var fast = require('./routes/fast');
-var edtf = require('./routes/edtf');
-var type = require('./routes/type');
-var language = require('./routes/language')
 
 var app = express();
 
