@@ -17,7 +17,7 @@ export function actuallyUpdateOriginal(attribute, row, value) {
 }
 
 function cleanForAPI(str) {
-  return str.replace('.','').replace(/[,+()<>"@]/g, '').substring(0, 15)
+  return str.substring(0, 15)
 }
 
 export function updateOriginal(attribute, row, value) {

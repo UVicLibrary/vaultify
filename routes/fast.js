@@ -6,6 +6,7 @@ const http = require('http');
 router.get('/:index/:query', function(req, res, next) {
   result = fastAPIQuery(req.params.query, req.params.index, (err, data) => {
     if (err || !data) {
+      console.log('here')
       console.log(err)
       return next(err)
     }
@@ -21,6 +22,7 @@ router.get('/:index/:query', function(req, res, next) {
 });
 
 function fastAPIQuery (query, queryIndex, callback) {
+  query = query.replace(/[^a-zA-Z\d\s]/g, '')
   const suggestReturn = queryIndex + "%2Cidroot%2Cauth";
   let qres = "&query=" + query + "&queryIndex=" + queryIndex + "&queryReturn=" + suggestReturn;
   qres += "&suggest=autoSubject&rows=20";
