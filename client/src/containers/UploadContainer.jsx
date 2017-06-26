@@ -69,7 +69,7 @@ function onChange(proxy, results, dispatch) {
   headers.forEach((attribute) => {
     attributeColumns[attribute] = headers.indexOf(attribute)
   });
-
+  
   data.forEach((fileLineArray, row) => {
     if (fileLineArray.length !== headers.length){
       return
