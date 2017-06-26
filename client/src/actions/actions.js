@@ -83,7 +83,7 @@ export function updateOriginal(attribute, row, value) {
         value.forEach(element => {
           calculateDate(element)
             .then(res => adjustedValues.push(res))
-            .then(dispatch(updateAdjusted(attribute, row, adjustedValues)))
+            .then(() => dispatch(updateAdjusted(attribute, row, adjustedValues)))
             .catch(rej => {})
         })        
         break;
@@ -91,15 +91,15 @@ export function updateOriginal(attribute, row, value) {
         value.forEach(element => {
           calculateLanguage(element)
             .then(res => adjustedValues.push(res))
-            .then(dispatch(updateAdjusted(attribute, row, adjustedValues)))
-            .catch(err => {})
+            .then(() => dispatch(updateAdjusted(attribute, row, adjustedValues)))
+            .catch(err => {console.log(err)})
         });   
         break;
       case DynamicAttributes.resource_type:
         value.forEach(element => {
           calculateType(element)
             .then(res => adjustedValues.push(res))
-            .then(dispatch(updateAdjusted(attribute, row, adjustedValues)))
+            .then(() => dispatch(updateAdjusted(attribute, row, adjustedValues)))
             .catch(err => {})
         });      
         break;
