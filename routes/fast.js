@@ -22,6 +22,7 @@ router.get('/:index/:query', function(req, res, next) {
 
 function fastAPIQuery (query, queryIndex, callback) {
   query = query.replace(/[^a-zA-Z\d\s]/g, '')
+  console.log(query)
   const suggestReturn = queryIndex + "%2Cidroot%2Cauth";
   let qres = "&query=" + query + "&queryIndex=" + queryIndex + "&queryReturn=" + suggestReturn;
   qres += "&suggest=autoSubject&rows=20";

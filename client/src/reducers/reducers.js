@@ -90,10 +90,20 @@ function headers(state = [], action) {
   }
 }
 
+function filename(state="Filename", action) {
+  switch(action.type) {
+    case ActionTypes.UPDATE_FILENAME:
+      return action.value
+    default:
+      return state
+  }
+}
+
 const atlasReducers = combineReducers({
    dynamicAttributes,
    flatAttributes,
    headers,
+   filename,
 })
 
 export default atlasReducers

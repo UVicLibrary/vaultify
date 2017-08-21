@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
     resource_type, 
     genre 
   } = dynamicAttributes;
-  const { title } = flatAttributes;
+  const { title, object_type } = flatAttributes;
  
   return {
     creator,
@@ -40,6 +40,7 @@ const mapStateToProps = (state) => {
     resource_type,
     genre,
     title,
+    object_type,
   }
 }
 

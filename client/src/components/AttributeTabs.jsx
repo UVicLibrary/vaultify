@@ -40,6 +40,7 @@ class AttributeTabs extends Component {
       resource_type, 
       genre,
       title,
+      object_type,
       update,
       updateAll,
     } = this.props
@@ -47,16 +48,19 @@ class AttributeTabs extends Component {
       <Paper
         zDepth={1}
       >
+
       <Tabs>
         <Tab label="creator" >
         <div>
           <ValueGrid
             titles = {title}
             data = {creator}
+            object_type = {object_type}
             onApply = {(row, value) => update('creator', row, value)}
             onApplyAll = {(rows, value) => updateAll('creator', rows, value)}
             attribute = "Creator"
             category = {DialogCategories.FAST}
+            showPages = {this.props.showPages}
           />
         </div>
         </Tab>
@@ -66,10 +70,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {contributor}
+            object_type = {object_type}
             onApply = {(row, value) => update('contributor', row, value)}
             onApplyAll = {(rows, value) => updateAll('contributor', rows, value)} 
             attribute = "Contributor"
             category = {DialogCategories.FAST}
+            showPages = {this.props.showPages}
           />
         </div>
         </Tab>
@@ -79,10 +85,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {subject}
+            object_type = {object_type}
             onApply = {(row, value) => update('subject', row, value)}
             onApplyAll = {(rows, value) => updateAll('subject', rows, value)}
             attribute = "Subject"
             category = {DialogCategories.FAST}
+            showPages = {this.props.showPages}
           />         
         </div>
         </Tab>
@@ -92,10 +100,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {geographic_coverage}
+            object_type = {object_type}
             onApply = {(row, value) => update('geographic_coverage', row, value)}
             onApplyAll = {(rows, value) => updateAll('geographic_coverage', rows, value)}
             attribute = "Geographic Coverage"
             category = {DialogCategories.FAST}
+            showPages = {this.props.showPages}
           /> 
         </div>
         </Tab>
@@ -105,10 +115,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {date_created}
+            object_type = {object_type}
             onApply = {(row, value) => update('date_created', row, value)}
             onApplyAll = {(rows, value) => updateAll('date_created', rows, value)}
             attribute = "Date Created"
             category = {DialogCategories.EDTF}
+            showPages = {this.props.showPages}
           /> 
         </div>
         </Tab>
@@ -118,10 +130,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {chronological_coverage}
+            object_type = {object_type}
             onApply = {(row, value) => update('chronological_coverage', row, value)}
             onApplyAll = {(rows, value) => updateAll('chronological_coverage', rows, value)}
             attribute = "Chronological Coverage"
             category = {DialogCategories.EDTF}
+            showPages = {this.props.showPages}
           /> 
         </div>
         </Tab>
@@ -131,10 +145,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {date_digitized}
+            object_type = {object_type}
             onApply = {(row, value) => update('date_digitized', row, value)}
             onApplyAll = {(rows, value) => updateAll('date_digitized', rows, value)}
             attribute = "Date Digitized"
             category = {DialogCategories.EDTF}
+            showPages = {this.props.showPages}
           /> 
         </div>
         </Tab>
@@ -144,10 +160,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {language}
+            object_type = {object_type}
             onApply = {(row, value) => update('language', row, value)}
             onApplyAll = {(rows, value) => updateAll('language', rows, value)}
             attribute = "Language"
             category = {DialogCategories.LANGUAGE}
+            showPages = {this.props.showPages}
           /> 
         </div>
         </Tab>
@@ -157,10 +175,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {resource_type}
+            object_type = {object_type}
             onApply = {(row, value) => update('resource_type', row, value)}
             onApplyAll = {(rows, value) => update('resource_type', rows, value)}
             attribute = "Type"
             category = {DialogCategories.TYPE}
+            showPages = {this.props.showPages}
           /> 
         </div>
         </Tab>
@@ -170,10 +190,12 @@ class AttributeTabs extends Component {
           <ValueGrid
             titles = {title}
             data = {genre}
+            object_type = {object_type}
             onApply = {(row, value) => update('genre', row, value)}
             onApplyAll = {(rows, value) => updateAll('genre', rows, value)}
             attribute = "Genre"
-            category = {DialogCategories.EDTF}
+            category = {DialogCategories.GENRE}
+            showPages = {this.props.showPages}
           /> 
         </div>
         </Tab>       

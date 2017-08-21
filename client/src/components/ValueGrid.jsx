@@ -20,8 +20,10 @@ class ValueGrid extends Component {
       this.state = {
           dialogOpen: false,
           selectedRow: 0,
+          showPages: true
       }
       this.dataLength = this.props.data.length;
+      this.rowMap = {}
       
       this.onRowSelection = this.onRowSelection.bind(this);
       this.handleDialogCancel = this.handleDialogCancel.bind(this);
@@ -30,20 +32,21 @@ class ValueGrid extends Component {
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      data: nextProps.data
+      data: nextProps.data,
+      showPages: nextProps.showPages
     })
   }
 
   handleApply(value) {
     this.handleDialogCancel()
-    this.props.onApply(this.state.selectedRow, value)
+    this.props.onApply(this.rowMap[this.state.selectedRow], value)
     //this.selectNextRow()   
   }
 
   handleApplyAll(value) {
     this.handleDialogCancel()
     let rows = [];
-    let original_value = this.props.data[this.state.selectedRow].original
+    let original_value = this.props.data[this.rowMap[this.state.selectedRow]].original
     this.props.data.forEach((row, index) => {
       let equal = true
       row.original.forEach((element, ind) => {
@@ -84,8 +87,33 @@ class ValueGrid extends Component {
   handleDialogCancel() {
     this.setState({dialogOpen: false});
   }
+  
+  renderRows() {
+    let count = 0
+    return this.props.data.map((row, index) => {
+      if (this.props.showPages || this.props['object_type'][index] == "GenericWork") {
+        this.rowMap[count] = index;
+        count++; 
+        return (
+            <TableRow 
+              key={index} 
+              style={style}
+            >
+              <TableRowColumn style={style}>{this.props.titles[index]}</TableRowColumn>
+              <TableRowColumn style={style}>{row.original.join('\n')}</TableRowColumn>
+              <TableRowColumn style={style}>{row.adjusted.join('\n')}</TableRowColumn>
+            </TableRow>
+          ) 
+      } else {
+        return null;
+      }                   
+    })
+  }
 
   render() {
+    console.log(this.props)
+    console.log(this.props['object_type'])
+    const rows = this.renderRows()
     return (
       <div>
         <Table
@@ -104,19 +132,7 @@ class ValueGrid extends Component {
             displayRowCheckbox={false}
             showRowHover={true}
           >
-           {this.props.data.map((row, index) => {
-              return (
-                <TableRow 
-                  key={index} 
-                  style={style}
-                >
-                  <TableRowColumn style={style}>{this.props.titles[index]}</TableRowColumn>
-                  <TableRowColumn style={style}>{row.original.join('\n')}</TableRowColumn>
-                  <TableRowColumn style={style}>{row.adjusted.join('\n')}</TableRowColumn>
-                </TableRow>
-              )                  
-            })
-           }
+           {rows}
           </TableBody>
         </Table>
         <ModifyDialog
@@ -124,9 +140,9 @@ class ValueGrid extends Component {
           onCancel={this.handleDialogCancel}
           onApply={this.handleApply}
           onApplyAll={this.handleApplyAll}
-          title={this.props.titles[this.state.selectedRow]}
-          original={this.props.data[this.state.selectedRow].original}
-          adjusted={this.props.data[this.state.selectedRow].adjusted}
+          title={this.props.titles[this.rowMap[this.state.selectedRow]]}
+          original={this.props.data[this.rowMap[this.state.selectedRow]].original}
+          adjusted={this.props.data[this.rowMap[this.state.selectedRow]].adjusted}
           attribute={this.props.attribute}
           category={this.props.category}
         />

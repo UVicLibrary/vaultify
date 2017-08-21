@@ -20,6 +20,10 @@ function cleanForAPI(str) {
   return str.substring(0, 15)
 }
 
+function cleanForAAATAPI(str) {
+  return str.substring(0, 15).split(" ")[0]
+}
+
 export function updateOriginal(attribute, row, value) {
   return dispatch => {
     dispatch(actuallyUpdateOriginal(attribute, row, value))
@@ -32,7 +36,7 @@ export function updateOriginal(attribute, row, value) {
             return
           }
           element = cleanForAPI(element)
-          fetch('/fast/suggest00/' + element)
+          fetch('/fast/suggestall/' + element)
             .then(res => res.json())
             .then(json => {
               adjustedValues.push(json.names[0])
@@ -66,11 +70,12 @@ export function updateOriginal(attribute, row, value) {
             return
           }
           element = cleanForAPI(element)
+          element = element.replace("B.C.", 'British')
           fetch('/fast/suggest51/' + element)
             .then(res => res.json())
             .then(json => {
               adjustedValues.push(json.names[0])
-              
+              dispatch(updateAdjusted(attribute, row, adjustedValues))
             })
             .catch(err => {
               console.error(err.stack)
@@ -104,6 +109,21 @@ export function updateOriginal(attribute, row, value) {
         });      
         break;
       case DynamicAttributes.genre:
+        value.forEach(element => {
+          if (element === ""){
+            return
+          }   
+          element = cleanForAAATAPI(element)       
+          fetch('/aat/' + element)
+            .then(res => res.json())
+            .then(json => {
+              adjustedValues.push(json.names[0])
+              dispatch(updateAdjusted(attribute, row, adjustedValues))
+            })
+            .catch(err => {
+              console.error(err.stack)
+            })
+        });
         break;
       default:
         break;
@@ -133,6 +153,13 @@ export function updateFlat(attribute, row, value) {
 export function updateHeaders(value) {
   return {
     type: ActionTypes.UPDATE_HEADERS,
+    value
+  }
+}
+
+export function updateFilename(value) {
+  return {
+    type: ActionTypes.UPDATE_FILENAME,
     value
   }
 }

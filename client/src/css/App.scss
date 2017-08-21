@@ -5,8 +5,8 @@
 
 .Home-header {
   background-color: $color-bg;
-  height: 200;
-  line-height: 150px;
+  height: 100;
+  line-height: 100px;
   padding: 20px;
   color: white;
   text-align: center;
@@ -17,6 +17,11 @@
   padding: 20px ;
   color: white;
   text-align: center;
+}
+
+.Center-text {
+  color: black;
+  text-align: center; 
 }
 
 .Stepper {

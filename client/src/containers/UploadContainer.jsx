@@ -8,6 +8,7 @@ import {
   updateOriginal,
   updateFlat,
   updateHeaders,
+  updateFilename,
 } from '../actions/actions'
 
 const style = {
@@ -20,8 +21,8 @@ class Upload extends Component {
       this.texts = []
   }
 
-
   render() {
+    console.log(this.props)
     return (
       <div>
         <Banner 
@@ -37,15 +38,24 @@ class Upload extends Component {
               />
             </FileInput>
           </form>  
-        </div>     
+           
+        </div> 
+        <div className='Center-text'>
+          {this.props.filename} 
+        </div>
       </div>
     );
   }
 }
 
 function onChange(proxy, results, dispatch) {
+  console.log(results)
   const fileData = results[0][0].target.result
+  const fileName = results[0][1].name
+  console.log(fileName)
   //const { data, errors, meta } = parse(fileData);
+
+  dispatch(updateFilename(fileName))
   const { data } = parse(fileData);
   const headers = data[0]
   dispatch(updateHeaders(headers));
@@ -87,7 +97,9 @@ function onChange(proxy, results, dispatch) {
 } 
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    filename: state.filename
+  }
 }
 
 

@@ -8,6 +8,7 @@ import TypeEntry from '../components/TypeEntry'
 import LanguageEntry from '../components/LanguageEntry'
 import EdtfEntry from '../components/EdtfEntry';
 import FastEntry from '../components/FastEntry';
+import GenreEntry from '../components/GenreEntry';
 
 import { DialogCategoriesArray } from '../constants/DialogCategoriesArray';
 import * as DialogCategories from '../constants/DialogCategories';
@@ -47,7 +48,8 @@ class ModifyDialog extends Component {
       this.setState({
         title: nextProps.title,
         original: nextProps.original,
-        newAdjusted: nextProps.adjusted
+        newAdjusted: nextProps.adjusted,
+        index: nextProps.index,
       })
   }
 
@@ -89,6 +91,10 @@ class ModifyDialog extends Component {
         return <TypeEntry
                  onAdd={this.handleAdd}
                />
+      case DialogCategories.GENRE:
+        return <GenreEntry
+                 onAdd={this.handleAdd}
+               />
       default:
         return 
     }
@@ -101,6 +107,10 @@ class ModifyDialog extends Component {
       <FlatButton
         label="Cancel"
         onTouchTap={onCancel}
+      />,
+      <FlatButton
+        label="ApplyOriginal"
+        onTouchTap={() => {onApply(this.state.original)}}
       />,
       <FlatButton
         label="ApplyAll"
