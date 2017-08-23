@@ -59,6 +59,7 @@ class FastEntry extends Component {
     return (
       <AutoComplete
         id='autocomplete'
+        floatingLabelText='New Adjusted Value'
         searchText={currentValue}
         onUpdateInput={this.handleUpdateInput}
         onNewRequest={this.handleNewRequest}

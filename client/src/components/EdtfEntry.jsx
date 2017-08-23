@@ -47,6 +47,7 @@ class EdtfEntry extends Component {
     return (
       <TextField
         id='autocomplete'
+        floatingLabelText='New Adjusted Value'
         value={currentValue}
         onChange={this.handleUpdateInput}
         onKeyPress={this.handleKeyPress}
