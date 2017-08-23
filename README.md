@@ -15,4 +15,4 @@ You will need two terminal sessions active.
 
 1. From the project root, run `node bin/www` to start the backend (available at `localhost:3001`).
 
-2. From `client/`, run `npm run start` to start the development server. Any changes you make within the `client/src` directory will be compiled automatically and served to `localhost:3000`.
+2. From `client/`, run `npm run build-css` to build the css pages, then `npm run start` to start the development server. Any changes you make within the `client/src` directory will be compiled automatically and served to `localhost:3000`.
