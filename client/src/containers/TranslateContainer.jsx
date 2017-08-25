@@ -23,7 +23,6 @@ class Translate extends Component {
   } 
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <Banner
