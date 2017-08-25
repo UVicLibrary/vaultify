@@ -10,19 +10,20 @@ router.get('/:index/:query', function(req, res, next) {
       return next(err)
     }
 
-    const values = [] 
+    const names = [] 
+    const ids = []
     data.forEach(element => {
-      if (!values.includes(element.auth)){
-          values.push(element.auth)
+      if (!names.includes(element.auth)){
+          names.push(element.auth)
+          ids.push(element.idroot)
         }
     })
-    res.json({'names': values})
+    res.json({'names': names, 'ids': ids})
   })
 });
 
 function fastAPIQuery (query, queryIndex, callback) {
   query = query.replace(/[^a-zA-Z\d\s]/g, '')
-  console.log(query)
   const suggestReturn = queryIndex + "%2Cidroot%2Cauth";
   let qres = "&query=" + query + "&queryIndex=" + queryIndex + "&queryReturn=" + suggestReturn;
   qres += "&suggest=autoSubject&rows=20";

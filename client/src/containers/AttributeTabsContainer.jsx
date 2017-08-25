@@ -13,6 +13,7 @@ class AttributeTabsContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   const { dynamicAttributes, flatAttributes } = state;
   const { 
     creator, 

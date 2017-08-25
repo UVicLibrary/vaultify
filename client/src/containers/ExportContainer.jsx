@@ -41,12 +41,20 @@ class Export extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { dynamicAttributes, flatAttributes, headers } = state;
+  const { dynamicAttributes, flatAttributes, headers, fastUriMap } = state;
   const data = dynamicAttributes[dynamicAttributeNames.creator].map((dummy, index) => {
     const dataRow = headers.map(header => {
 
       if (has.call(dynamicAttributes, header)) {
-        return dynamicAttributes[header][index].adjusted.join('|');
+        const values = dynamicAttributes[header][index].adjusted
+        const mappedValues = values.map(value => {
+          if (has.call(fastUriMap, value)) {
+            return value + '|' + fastUriMap[value]
+          } else {
+            return value
+          }
+        })
+        return mappedValues.join('|');
       } else {
         return flatAttributes[header][index].join('|');
       }

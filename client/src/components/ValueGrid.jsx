@@ -111,8 +111,6 @@ class ValueGrid extends Component {
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.props['object_type'])
     const rows = this.renderRows()
     return (
       <div>

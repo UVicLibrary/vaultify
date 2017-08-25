@@ -21,6 +21,17 @@ function dynamicRow(state = {
   }
 }
 
+function fastUriMap(state={}, action) {
+  switch(action.type) {
+    case ActionTypes.UPDATE_FAST_URI_MAP:
+      return Object.assign({}, state, {
+        ...action.map
+      })
+    default:
+      return state
+  }
+}
+
 function dynamicRows(state = [], action) {
   switch(action.type) {
     case ActionTypes.UPDATE_ORIGINAL:
@@ -104,6 +115,7 @@ const atlasReducers = combineReducers({
    flatAttributes,
    headers,
    filename,
+   fastUriMap,
 })
 
 export default atlasReducers

@@ -39,8 +39,11 @@ export function updateOriginal(attribute, row, value) {
           fetch('/fast/suggestall/' + element)
             .then(res => res.json())
             .then(json => {
-              adjustedValues.push(json.names[0])
-              dispatch(updateAdjusted(attribute, row, adjustedValues))
+              if (json.names[0]) {
+                adjustedValues.push(json.names[0])
+                dispatch(updateAdjusted(attribute, row, adjustedValues))
+                dispatch(updateURI({[json.names[0]]: 'http://id.worldcat.org/fast/' + json.ids[0].substring(3)}))
+              }
             })
             .catch(err => {
               console.error(err.stack)
@@ -56,8 +59,11 @@ export function updateOriginal(attribute, row, value) {
           fetch('/fast/suggestall/' + element)
             .then(res => res.json())
             .then(json => {
-              adjustedValues.push(json.names[0])
-              dispatch(updateAdjusted(attribute, row, adjustedValues))
+              if (json.names[0]) {
+                adjustedValues.push(json.names[0])
+                dispatch(updateAdjusted(attribute, row, adjustedValues))
+                dispatch(updateURI({[json.names[0]]: 'http://id.worldcat.org/fast/' + json.ids[0].substring(3)}))
+              }
             })
             .catch(err => {
               console.error(err.stack)
@@ -74,8 +80,11 @@ export function updateOriginal(attribute, row, value) {
           fetch('/fast/suggest51/' + element)
             .then(res => res.json())
             .then(json => {
-              adjustedValues.push(json.names[0])
-              dispatch(updateAdjusted(attribute, row, adjustedValues))
+              if (json.names[0]) {
+                adjustedValues.push(json.names[0])
+                dispatch(updateAdjusted(attribute, row, adjustedValues))
+                dispatch(updateURI({[json.names[0]]: 'http://id.worldcat.org/fast/' + json.ids[0].substring(3)}))
+              }
             })
             .catch(err => {
               console.error(err.stack)
@@ -161,5 +170,12 @@ export function updateFilename(value) {
   return {
     type: ActionTypes.UPDATE_FILENAME,
     value
+  }
+}
+
+export function updateURI(map) {
+  return {
+    type: ActionTypes.UPDATE_FAST_URI_MAP,
+    map
   }
 }
