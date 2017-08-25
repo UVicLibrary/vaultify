@@ -13,6 +13,7 @@ router.get('/:index/:query', function(req, res, next) {
     const names = [] 
     const ids = []
     data.forEach(element => {
+      console.log(element)
       if (!names.includes(element.auth)){
           names.push(element.auth)
           ids.push(element.idroot)
